@@ -1,0 +1,41 @@
+Data,Time
+Moi :bonjour ChatBot : Bonjour  ,vous voulez des information sur quel parking, vous pouvez nous donnez votre code postal afin de vous suggérer des parkings ?,2023-02-19 22:21:03.620252
+"Moi :Lyon 3e Arrondissement ChatBot : les parkings proposés dans cette commune sont :
+Gare de la Part-Dieu
+Francfort-Gare (Q Park)
+Lafayette-Corneille
+Place du Château
+Hôpital Edouard Herriot
+Place des Martyrs de la Résistance
+Bonnel-Servient
+Parking Les Halles
+Cuirassiers 2 centre commercial
+Parking Gare Part-Dieu parc minute Vivier Merle
+Saint-Isidore
+Desaix
+Parking Gare Part Dieu
+Cluzan
+Bonnel Gare Part-Dieu
+Lafayette
+Bonnefoi-Titanic
+Oxygène centre commercial
+Parking Villette
+Cuirassiers 1 centre commercial
+Garibaldi-Bonnel centre commercial
+Parking Fosse aux Ours
+Quel parking voulez vous choisir ?,2023-02-19 22:21:52.580551"
+Moi :Bonnel-Servient ChatBot :  Ce parcking  a 448 places vides.,2023-02-19 22:22:19.546565
+"Moi :voie entree ChatBot : 
+ 
+ le voie d'entrée de ce parking est Rue de Bonnel,2023-02-19 22:22:31.806158"
+"Moi :voie sortie ChatBot : 
+ 
+ le voie de sortie de ce parking est Rue Servient,2023-02-19 22:22:43.378668"
+"Moi :horaire ChatBot : 
+ 
+ l'horaire' de ce parking est Ouvert 24h/24h,2023-02-19 22:22:53.037197"
+"Moi :l'adresse ChatBot : 
+ 
+ l'adresse de ce parking est : longitude  4,84844980073643  latitude  45,7617556249476,2023-02-19 22:23:04.497460"
+Moi :A Bientôt ChatBot : Malheuresement, nous n'avons pas la disponibilité pour ce parking,2023-02-19 22:23:51.556746
+Moi :Au revoir ChatBot : A Bientôt,2023-02-19 22:24:04.895417

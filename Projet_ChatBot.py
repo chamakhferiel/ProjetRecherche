@@ -19,18 +19,42 @@ import urllib.request
 import numpy as n
 import math
 import string
-
+import datetime
+import csv
 
 root =Tk()
+
+def enregistrement(txt):
+    # Définir les données à écrire dans le fichier CSV
+    now = datetime.datetime.now()
+    data = [
+        [txt, now]
+        
+    ]
+
+    # Ouvrir le fichier CSV
+    with open('donnees.csv', mode='a', newline='') as file:
+        
+        # Créer un objet écrivain CSV
+        writer = csv.writer(file)
+        
+        # Écrire les données dans le fichier CSV
+        writer.writerows(data)
+        
+        # Fermer le fichier CSV
+        file.close()
+
+
+
 def import_donnee_reel_time(): 
     #os.remove("Parking_temps_reel.csv")
-    #urllib.request.urlretrieve("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/Parking_temps_reel.csv", "Parking_temps_reel.csv")
+    urllib.request.urlretrieve("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/Parking_temps_reel.csv", "Parking_temps_reel.csv")
     data_real_time = pd.read_csv('Parking_temps_reel.csv',sep=",")
     return data_real_time
 
 def import_donnee_detail(): 
     #os.remove("pvo_patrimoine_voirie.pvoparking.csv")
-    #urllib.request.urlretrieve("https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.csv?maxfeatures=-1", "pvo_patrimoine_voirie.pvoparking.csv")
+    urllib.request.urlretrieve("https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoparking/all.csv?maxfeatures=-1", "pvo_patrimoine_voirie.pvoparking.csv")
     data_detaille = pd.read_csv('pvo_patrimoine_voirie.pvoparking.csv',sep=";")
     
     
@@ -313,36 +337,52 @@ def answer(msg):
     
     
 def envoie():
-    
+    res =""
     envoie = "Moi :" +e.get()
+    res =res + envoie +" "
     txt.insert(END, "\n"+envoie)
-    if 'Bonjour' in e.get():           
+    if 'bonjour' in e.get():           
         txt.insert(END,"\n"+ "ChatBot : Bonjour  ,vous voulez des information sur quel parking, "+ 
                    "vous pouvez nous donnez votre code postal afin de vous suggérer des parkings"
                    +"?")
-        
+        res =res + "ChatBot : Bonjour  ,vous voulez des information sur quel parking, vous pouvez nous donnez votre code postal afin de vous suggérer des parkings ?"
+      
+    elif  'bonjour' in e.get():           
+        txt.insert(END,"\n"+ "ChatBot : Bonjour  ,vous voulez des information sur quel parking, "+ 
+                       "vous pouvez nous donnez votre code postal afin de vous suggérer des parkings"
+                       +"?")
+        res =res + "ChatBot : Bonjour  ,vous voulez des information sur quel parking, vous pouvez nous donnez votre code postal afin de vous suggérer des parkings ?"
+      
     elif 'Au revoir' in e.get():
+        res =res + "ChatBot : A Bientôt"
+      
         txt.insert(END,"\n"+ "ChatBot : A Bientôt")
         root.quit
-    else :
         
-            reponse=answer(e.get())
-            txt.insert(END,"\n"+ "ChatBot :" + reponse) 
+    else :
+        res =res + "ChatBot : "+ answer(e.get())
+        reponse=answer(e.get())
+        txt.insert(END,"\n"+ "ChatBot :" + reponse) 
+        
     e.delete(0,END)
+    enregistrement(res) 
+    
+    #return discussion
     
     
     
 data_real_time=import_donnee_reel_time()
 data_detaille=import_donnee_detail()
 
-
+#enregistrement=""
 txt =Text(root , font=("arial",12))
 txt.insert(END, "\n"+ "ChatBot : Bonjour que puis-je faire pour vous ?")
+#enregistrement=enregistrement+"ChatBot : Bonjour que puis-je faire pour vous ?"
 txt.grid(row=0,column=0,columnspan=2)
 e=Entry(root,width=100)
 e.grid(row=1,column=0)
 envoyer=Button(root,text="Envoyer",command=envoie).grid(row=1,column=1)
-
+#enregistrement=enregistrement+envoie()
 
 root.title("ChatBot")
 root.mainloop()
